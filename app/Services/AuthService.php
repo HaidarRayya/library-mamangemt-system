@@ -100,7 +100,7 @@ class AuthService
     public static function  user_permissions($role)
     {
 
-        $permissions = Role::where('name', '=', "customer")->with(['permissions' => function ($q) {
+        $permissions = Role::where('name', '=', $role)->with(['permissions' => function ($q) {
             $q->select('name');
         }])->first();
         $permissions = $permissions->permissions;
